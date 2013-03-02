@@ -2,7 +2,7 @@
 \alias{geolookup}
 \title{Geo Lookup}
 \usage{
-  geolookup(zip, city, state, county)
+  geolookup(zip, city, state)
 }
 \arguments{
   \item{zip}{}
@@ -10,8 +10,6 @@
   \item{city}{}
 
   \item{state}{}
-
-  \item{county}{}
 }
 \value{
   a data table with columnz zip, lat, lon, city, state,

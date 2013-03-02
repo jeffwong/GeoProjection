@@ -5,9 +5,11 @@ Version: 0.1
 Date: 2013-01-15
 Author: Jeffrey Wong
 Maintainer: Jeffrey Wong <jeff.ct.wong@gmail.com>
-Description: Lookup city, county and state given a zip code
+Description: Lookup city, state zip code and time zone data.
+    Data comes from http://www.boutell.com/zipcodes/
 License: GPL
 LazyLoad: yes
+LazyData: true
 Depends:
     pdist,
     data.table

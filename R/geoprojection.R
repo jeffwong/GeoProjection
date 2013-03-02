@@ -10,8 +10,7 @@
 #'  projectLatLon(latlon)
 #' @export
 projectLatLon = function(latlon) {
-    data("GeoLookup")
-    dist = pdist(latlon, subset(GeoLookup[!is.na(Lat) & !is.na(Lon)], select = 2:3))
+    dist = pdist(latlon, GeoLookup[!is.na(Lat) & !is.na(Lon)][,c("Lat", "Lon"),with=F])
     dist = as.matrix(dist)
     matching.indices = apply(dist, 1, which.min)
     GeoLookup[matching.indices,]
@@ -25,14 +24,12 @@ projectLatLon = function(latlon) {
 #' @param zip
 #' @param city
 #' @param state
-#' @param county
 #' @return a data table with columnz zip, lat, lon, city, state, county
 #' @examples
 #'  geolookup(zip = c(94109, 94306))
 #'  geolookup(city = "san francisco")
 #' @export
-geolookup = function(zip, city, state, county) {
-    data("GeoLookup")
+geolookup = function(zip, city, state) {
     if (!missing(zip)) {
         GeoLookup[Zip %in% zip]
     }
@@ -41,8 +38,5 @@ geolookup = function(zip, city, state, county) {
     }
     else if (!missing(state)) {
         GeoLookup[State %in% toupper(state)]
-    }
-    else if (!missing(county)) {
-        GeoLookup[County %in% toupper(county)]
     }
 }
