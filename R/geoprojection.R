@@ -43,7 +43,7 @@ projectGeo = function(zip, city, state) {
         geoprojection = GeoLookup[State %in% toupper(state)]
         geoprojection = merge(state.dt, geoprojection, all.x = T, by = "State")
     }
-    return (geoprojection[,-1,with=F])
+    return (geoprojection)
 }
 
 #' Geo Lookup
